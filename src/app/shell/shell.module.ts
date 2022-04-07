@@ -9,9 +9,10 @@ import { MaterialModule } from '@app/material.module';
 import { AuthModule } from '@app/auth';
 import { ShellComponent } from './shell.component';
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   imports: [CommonModule, TranslateModule, FlexLayoutModule, MaterialModule, AuthModule, I18nModule, RouterModule],
-  declarations: [HeaderComponent, ShellComponent],
+  declarations: [HeaderComponent, ShellComponent, FooterComponent],
 })
 export class ShellModule {}
