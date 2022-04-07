@@ -1,0 +1,32 @@
+{
+  "generator-ngx-rocket": {
+    "version": "10.1.2",
+    "props": {
+      "location": "path",
+      "strict": true,
+      "skipInstall": false,
+      "skipQuickstart": false,
+      "initGit": true,
+      "usePrefix": true,
+      "appName": "training-exercises",
+      "target": ["web"],
+      "ui": "material",
+      "layout": "simple",
+      "features": ["auth"],
+      "languages": ["de-DE", "en-US", "it-IT"],
+      "tools": ["prettier", "hads"],
+      "utility": [],
+      "deploy": "none",
+      "projectName": "training-exercises",
+      "packageManager": "npm",
+      "mobile": [],
+      "desktop": [],
+      "pwa": false,
+      "auth": true,
+      "lazy": false,
+      "e2e": false,
+      "cypress": false,
+      "angulartics": false
+    }
+  }
+}
