@@ -12,5 +12,7 @@
   "Username is required": "L'identificativo é richiesto",
   "Username or password incorrect.": "Identificativo o password incorretti.",
   "Remember me": "Ricordami",
-  "Version": "Versione"
+  "Version": "Versione",
+  "Administration": "Amministrazione",
+  "Products": "Prodotti"
 }
