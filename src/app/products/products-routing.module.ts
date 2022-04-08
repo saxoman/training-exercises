@@ -5,6 +5,7 @@ import { Shell } from '@app/shell/shell.service';
 
 import { ProductsComponent } from '@app/products/products.component';
 import { ProductsListComponent } from '@app/products/products-list/products-list.component';
+import { FilterByNamePipe } from '@shared/filter-by-name.pipe';
 
 const routes: Routes = [
   Shell.childRoutes([

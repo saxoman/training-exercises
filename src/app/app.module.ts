@@ -16,6 +16,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AdministrationModule } from '@app/administration/administration.module';
 import { ProductsModule } from '@app/products/products.module';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HelperService } from '@shared/helper.service';
 
 @NgModule({
   imports: [
@@ -33,6 +35,7 @@ import { ProductsModule } from '@app/products/products.module';
     AuthModule,
     AdministrationModule,
     ProductsModule,
+    HttpClientInMemoryWebApiModule.forRoot(HelperService, { dataEncapsulation: false }),
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
   declarations: [AppComponent],

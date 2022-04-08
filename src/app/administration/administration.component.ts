@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { faker } from '@faker-js/faker';
 import { Product } from '@app/models/product.model';
+import { HelperService } from '@shared/helper.service';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-administration',
@@ -8,20 +12,19 @@ import { Product } from '@app/models/product.model';
   styleUrls: ['./administration.component.scss'],
 })
 export class AdministrationComponent implements OnInit {
-  products: Product[] = [];
-  constructor() {}
+  constructor(private helper: HelperService, private http: HttpClient) {}
 
   ngOnInit(): void {
-    for (var i = 1; i <= 10; i++) {
-      this.products.push({
-        id: i.toString(),
-        title: faker.commerce.productName(),
-        description: faker.lorem.sentences(),
-        price: +faker.commerce.price(),
-        image: faker.image.avatar(),
-        quantity: faker.datatype.number({ min: 1, max: 500, precision: 1 }).toString(),
-      });
-    }
-    console.log(JSON.stringify(this.products));
+    this.getProducts().subscribe((products: Product[]) => {
+      console.log(products);
+    });
+  }
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.helper.productsUrl);
+  }
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      return of(result as T);
+    };
   }
 }
