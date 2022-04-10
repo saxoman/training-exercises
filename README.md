@@ -138,3 +138,16 @@ Development, build and quality processes are based on [angular-cli](https://gith
 - [Updating dependencies and tools](docs/updating.md)
 - [Using a backend proxy for development](docs/backend-proxy.md)
 - [Browser routing](docs/routing.md)
+
+#### Run json server
+
+- npm run server
+
+#### Generate data in data.json
+
+- npx ts-node server.js or npm run generate
+
+#### in package.json added
+
+- "generate": "node ./server/server.js > ./server/data.json",
+- "server": "json-server --watch ./server/data.json"

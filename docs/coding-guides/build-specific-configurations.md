@@ -106,9 +106,9 @@ const proxyConfig = [
 
 Quick SSR note: SSR works by building all the client bundles like normal, but then rendering them in real-time. So,
 
-- the rest of your app from `main.server.ts` down has access to your build-time environment only, like your normal
+- the rest of your app from `main.server.js` down has access to your build-time environment only, like your normal
   client bundles
-- but `server.ts` (the file configuring and running express) has access to your serve-time environment variables
+- but `server.js` (the file configuring and running express) has access to your serve-time environment variables
 
 ### Less optimal alternatives
 
@@ -264,7 +264,7 @@ As a sidenote, ngx-rocket `env` isn't used for the proxy config file, because it
 Fortunately, for that same reason, you can directly use `process.env` within the proxy config file to avoid having
 separate proxy configs in most cases.
 
-On that same note, the `server.ts` for SSR builds can also access `process.env` as it's set at runtime. But keep in mind
+On that same note, the `server.js` for SSR builds can also access `process.env` as it's set at runtime. But keep in mind
 that it stops there - the app itself is built, so even in SSR the client app can't access process environment variables.
 
 ## Security Considerations
