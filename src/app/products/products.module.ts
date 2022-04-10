@@ -9,9 +9,10 @@ import { ProductsRoutingModule } from '@app/products/products-routing.module';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { FilterByNamePipe } from '@shared/filter-by-name.pipe';
 import { FormsModule } from '@angular/forms';
+import { ProductModalComponent } from './product-modal/product-modal.component';
 
 @NgModule({
-  declarations: [ProductsComponent, ProductsListComponent, FilterByNamePipe],
+  declarations: [ProductsComponent, ProductsListComponent, ProductModalComponent],
   imports: [
     CommonModule,
     TranslateModule,

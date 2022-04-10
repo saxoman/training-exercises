@@ -2,41 +2,60 @@
   <mat-form-field>
     <input matInput [(ngModel)]="searchText" placeholder="Filter by Title" />
   </mat-form-field>
+  <a (click)="onAddNewProduct()" mat-raised-button color="primary">Add new product</a>
   <mat-table [dataSource]="products | filterByName: searchText" class="mat-elevation-z8">
-    <!-- Position Column -->
+    <!-- ID Column -->
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
     </ng-container>
-
-    <!-- Name Column -->
+    <!-- Title Column -->
     <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.title }} </mat-cell>
     </ng-container>
-
-    <!-- Weight Column -->
+    <!-- Description Column -->
     <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.description }} </mat-cell>
     </ng-container>
-
-    <!-- Symbol Column -->
+    <!-- Price Column -->
     <ng-container matColumnDef="price">
       <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.price }} </mat-cell>
     </ng-container>
-    <!-- Symbol Column -->
+    <!-- Image Column -->
     <ng-container matColumnDef="image">
       <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
       <mat-cell *matCellDef="let element"><img style="width: 150px" src="{{ element.image }}" alt="" /></mat-cell>
     </ng-container>
-    <!-- Symbol Column -->
+    <!-- Quantity Column -->
     <ng-container matColumnDef="quantity">
       <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.quantity }} </mat-cell>
     </ng-container>
-
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          (click)="onEditProduct($event)"
+          mat-mini-fab
+          color="primary"
+          aria-label="Example icon button with a menu icon"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          (click)="onDeleteProduct(element.id, $event)"
+          mat-mini-fab
+          color="accent"
+          aria-label="Example icon button with a plus one icon"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row
       *matRowDef="let row; columns: displayedColumns"

@@ -7,9 +7,21 @@ import { SharedModule } from '@shared';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@app/material.module';
 import { AdministrationComponent } from './administration.component';
+import { AllProductsComponent } from './all-products/all-products.component';
+import { FormsModule } from '@angular/forms';
+import { ProductComponent } from './product/product.component';
+import { DeleteConfirmationModalComponent } from './delete-confirmation-modal/delete-confirmation-modal.component';
 
 @NgModule({
-  imports: [CommonModule, TranslateModule, SharedModule, FlexLayoutModule, MaterialModule, AdministrationRoutingModule],
-  declarations: [AdministrationComponent],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    SharedModule,
+    FlexLayoutModule,
+    MaterialModule,
+    AdministrationRoutingModule,
+    FormsModule,
+  ],
+  declarations: [AdministrationComponent, AllProductsComponent, ProductComponent, DeleteConfirmationModalComponent],
 })
 export class AdministrationModule {}

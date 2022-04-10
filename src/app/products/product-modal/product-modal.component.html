@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>{{ data.title }}<button mat-dialog-close="false">X</button></h2>
+
+<mat-dialog-content>
+  <mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile>
+      <img src="{{ data.image }}" alt="{{ data.title }}" style="height: 100%" />
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-list>
+        <mat-list-item>ID: {{ data.id }}</mat-list-item>
+        <mat-list-item>Description: {{ data.description }}</mat-list-item>
+        <mat-list-item>Price: {{ data.price }}</mat-list-item>
+        <mat-list-item>Quantity: {{ data.quantity }}</mat-list-item>
+      </mat-list>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-dialog-content>

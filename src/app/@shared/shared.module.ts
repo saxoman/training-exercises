@@ -9,7 +9,7 @@ import { FilterByNamePipe } from './filter-by-name.pipe';
 
 @NgModule({
   imports: [FlexLayoutModule, MaterialModule, TranslateModule, CommonModule],
-  declarations: [LoaderComponent],
-  exports: [LoaderComponent],
+  declarations: [LoaderComponent, FilterByNamePipe],
+  exports: [LoaderComponent, FilterByNamePipe],
 })
 export class SharedModule {}
