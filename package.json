@@ -15,7 +15,7 @@
     "prettier": "prettier --write \"./src/**/*.{ts,js,html,scss}\"",
     "prettier:check": "prettier --list-different \"./src/**/*.{ts,js,html,scss}\"",
     "postinstall": "npm run prettier -s && husky install",
-    "generate": "node ./server/server.js > ./server/data.json",
+    "generate": "node ./server/server.ts > ./server/data.json",
     "server": "json-server --watch ./server/data.json"
   },
   "dependencies": {

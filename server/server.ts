@@ -1,9 +1,9 @@
-var faker = require('@faker-js/faker');
-var fs = require('fs');
+let faker = require('@faker-js/faker');
+let fs = require('fs');
 
-var database = { products: [] };
+const database = { products: [] } as any;
 
-for (var i = 1; i <= 100; i++) {
+for (let i = 1; i <= 100; i++) {
   database.products.push({
     id: i.toString(),
     title: faker.faker.commerce.productName(),

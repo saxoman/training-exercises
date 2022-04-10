@@ -33,7 +33,7 @@ The basic idea is simply to serve the `index.html` file for every request aimed 
 Here is an example on how to perform this on an [Express](http://expressjs.com) NodeJS server:
 
 ```js
-// Put this in your `server.js` file, after your other rules (APIs, static files...)
+// Put this in your `server.ts` file, after your other rules (APIs, static files...)
 app.get('/*', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });

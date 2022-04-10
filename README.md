@@ -145,9 +145,9 @@ Development, build and quality processes are based on [angular-cli](https://gith
 
 #### Generate data in data.json
 
-- npx ts-node server.js or npm run generate
+- npx ts-node server.ts or npm run generate
 
 #### in package.json added
 
-- "generate": "node ./server/server.js > ./server/data.json",
+- "generate": "node ./server/server.ts > ./server/data.json",
 - "server": "json-server --watch ./server/data.json"
