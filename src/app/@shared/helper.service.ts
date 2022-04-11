@@ -1,14 +1,13 @@
 import { Injectable, OnInit } from '@angular/core';
 import { faker } from '@faker-js/faker';
 import { Product } from '@app/models/product.model';
-import { InMemoryDbService } from 'angular-in-memory-web-api';
-import database from '../../../server/data.json';
+//import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 @Injectable({
   providedIn: 'root',
 })
-export class HelperService implements InMemoryDbService {
-  public productsUrl = 'api/products';
+export class HelperService {
+  public productsUrl = '/products';
   products: Product[] = [];
 
   createProducts() {
@@ -22,14 +21,11 @@ export class HelperService implements InMemoryDbService {
         quantity: faker.datatype.number({ min: 1, max: 500, precision: 1 }).toString(),
       });
     }
-    console.log(database.product);
-    //JSON.stringify(product);
     return this.products;
   }
 
   createDb() {
     const products = this.createProducts();
-
     return { products };
   }
   constructor() {}

@@ -11,7 +11,7 @@ we also have setup a backend proxy to redirect API calls to whatever URL and por
 
 ## How to configure
 
-In the root folder you will find a `proxy.conf.js`, containing the backend proxy configuration.
+In the root folder you will find a `proxy.conf.json`, containing the backend proxy configuration.
 
 The interesting part is there:
 

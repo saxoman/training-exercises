@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '@shared/products.service';
 import { MatDialog } from '@angular/material/dialog';
-import { Product } from '@app/models/product.model';
 import { RowContext } from '@angular/cdk/table';
 import { ProductModalComponent } from '@app/products/product-modal/product-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,7 +24,7 @@ export class AllProductsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productsService.getProducts().subscribe((products: Product[]) => {
+    this.productsService.getProducts().subscribe((products) => {
       this.products = products;
     });
   }
