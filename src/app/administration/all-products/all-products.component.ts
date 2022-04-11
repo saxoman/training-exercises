@@ -5,6 +5,7 @@ import { RowContext } from '@angular/cdk/table';
 import { ProductModalComponent } from '@app/products/product-modal/product-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeleteConfirmationModalComponent } from '@app/administration/delete-confirmation-modal/delete-confirmation-modal.component';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-all-products',
@@ -20,7 +21,8 @@ export class AllProductsComponent implements OnInit {
     private productsService: ProductsService,
     public dialog: MatDialog,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private notifierService: NotifierService
   ) {}
 
   ngOnInit(): void {
@@ -55,5 +57,8 @@ export class AllProductsComponent implements OnInit {
     this.preventDefaultProp(event);
     let dialogConfirmation = this.dialog.open(DeleteConfirmationModalComponent);
     dialogConfirmation.beforeClosed;
+    dialogConfirmation.afterClosed().subscribe(() => {
+      this.notifierService.notify('success', 'You are awesome! I mean it!');
+    });
   }
 }
