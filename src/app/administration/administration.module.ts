@@ -8,9 +8,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@app/material.module';
 import { AdministrationComponent } from './administration.component';
 import { AllProductsComponent } from './all-products/all-products.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductComponent } from './product/product.component';
 import { DeleteConfirmationModalComponent } from './delete-confirmation-modal/delete-confirmation-modal.component';
+import { NewProductComponent } from './new-product/new-product.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,14 @@ import { DeleteConfirmationModalComponent } from './delete-confirmation-modal/de
     MaterialModule,
     AdministrationRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
-  declarations: [AdministrationComponent, AllProductsComponent, ProductComponent, DeleteConfirmationModalComponent],
+  declarations: [
+    AdministrationComponent,
+    AllProductsComponent,
+    ProductComponent,
+    DeleteConfirmationModalComponent,
+    NewProductComponent,
+  ],
 })
 export class AdministrationModule {}

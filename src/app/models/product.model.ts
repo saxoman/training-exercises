@@ -5,15 +5,15 @@ export class Product {
   public price: number;
   public image: string;
   public quantity: string;
-
-  constructor(id: string, title: string, description: string, price: number, image: string, quantity: string) {
-    this.id = id;
-    this.title = title;
-    this.description = description;
-    this.price = price;
-    this.image = image;
-    this.quantity = quantity;
-  }
+  //
+  // constructor(id: string, title: string, description: string, price: number, image: string, quantity: string) {
+  //   this.id = id;
+  //   this.title = title;
+  //   this.description = description;
+  //   this.price = price;
+  //   this.image = image;
+  //   this.quantity = quantity;
+  // }
 }
 // export interface Product {
 //   id: string;

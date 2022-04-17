@@ -4,6 +4,7 @@ import { ProductsService } from '@shared/products.service';
 import { RowContext } from '@angular/cdk/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductModalComponent } from '@app/products/product-modal/product-modal.component';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-products-list',
@@ -14,12 +15,23 @@ export class ProductsListComponent implements OnInit {
   products: any;
   displayedColumns: string[] = ['id', 'title', 'description', 'price', 'image', 'quantity'];
   searchText: string = '';
+  error = null;
 
-  constructor(private productsService: ProductsService, public dialog: MatDialog) {}
+  constructor(
+    private productsService: ProductsService,
+    public dialog: MatDialog,
+    private notifierService: NotifierService
+  ) {}
 
   ngOnInit(): void {
-    this.productsService.getProducts().subscribe((products: Product[]) => {
-      this.products = products;
+    this.productsService.getProducts().subscribe({
+      next: (value) => {
+        this.products = value;
+      },
+      error: (err) => {
+        this.error = err;
+        this.notifierService.notify('error', `'An error ocured ${err.message}'`);
+      },
     });
   }
 

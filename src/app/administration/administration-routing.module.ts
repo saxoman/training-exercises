@@ -5,9 +5,10 @@ import { AdministrationComponent } from '@app/administration/administration.comp
 import { Shell } from '@app/shell/shell.service';
 import { ProductComponent } from '@app/administration/product/product.component';
 import { AllProductsComponent } from '@app/administration/all-products/all-products.component';
+import { NewProductComponent } from '@app/administration/new-product/new-product.component';
 const routes: Routes = [
   Shell.childRoutes([
-    { path: '', component: AdministrationComponent, data: { title: marker('Administration') } },
+    { path: '', component: AdministrationComponent, pathMatch: 'full', data: { title: marker('Administration') } },
     {
       path: 'administration',
       component: AllProductsComponent,
@@ -15,7 +16,12 @@ const routes: Routes = [
     },
     {
       path: 'administration/new-product',
-      component: ProductComponent,
+      component: NewProductComponent,
+      data: { title: marker('Administration | New Product') },
+    },
+    {
+      path: 'administration/new-product/:id',
+      component: NewProductComponent,
       data: { title: marker('Administration | New Product') },
     },
   ]),

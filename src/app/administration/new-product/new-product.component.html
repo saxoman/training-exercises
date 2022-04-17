@@ -1,0 +1,101 @@
+<div class="container">
+  <notifier-container></notifier-container>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h3>{{ buttonPageTitle }}</h3>
+      <form #postForm="ngForm" (ngSubmit)="onSubmit(postForm.value)">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Title"
+            #title="ngModel"
+            [(ngModel)]="productModel.title"
+            name="title"
+            required
+            [pattern]="textNumPattern"
+          />
+          <mat-error *ngIf="title.errors?.['pattern'] && title.touched">Must be a text!</mat-error>
+        </mat-form-field>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                placeholder="Price"
+                #price="ngModel"
+                [(ngModel)]="productModel.price"
+                name="price"
+                required
+                [pattern]="pricePattern"
+              />
+              <mat-error class="help-block" *ngIf="price.errors?.['pattern'] && price.touched"
+                >Must be a number!</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                placeholder="Quantity"
+                #quantity="ngModel"
+                [(ngModel)]="productModel.quantity"
+                name="quantity"
+                required
+                [pattern]="quantityPattern"
+              />
+              <mat-error class="help-block" *ngIf="quantity.errors?.['pattern'] && quantity.touched"
+                >Must be a number!</mat-error
+              >
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-form-field>
+          <textarea
+            rows="5"
+            matInput
+            placeholder="Description"
+            #desc="ngModel"
+            [(ngModel)]="productModel.description"
+            name="description"
+            required
+            [pattern]="textNumPattern"
+          ></textarea>
+          <mat-error class="help-block" *ngIf="desc.errors?.['pattern'] && desc.touched"
+            >Must be a text!</mat-error
+          > </mat-form-field
+        ><br />
+        <mat-form-field>
+          <div>
+            <mat-toolbar>
+              <input matInput readonly placeholder="{{ fileAttr }}" />
+              <button mat-flat-button color="primary">Browse File</button>
+            </mat-toolbar>
+            <input
+              *ngIf="editMode ? '[(ngModel)]=productModel.image' : 'ngModel'"
+              type="file"
+              #fileInput
+              id="uploadFile"
+              (change)="uploadFileEvt($event)"
+              name="image"
+              accept="image/*"
+              required
+            />
+          </div>
+        </mat-form-field>
+        <div class="img-space">
+          <ng-container *ngIf="isImageSaved; else elseTemplate">
+            <img [src]="cardImageBase64" />
+          </ng-container>
+          <ng-template #elseTemplate>
+            <img src="./../../assets/placeholder.png" class="img-responsive" />
+          </ng-template>
+        </div>
+        <button [disabled]="postForm.invalid && postForm.dirty" mat-raised-button color="primary" type="submit">
+          <mat-icon>done</mat-icon>{{ buttonPageTitle }}</button
+        ><br /><br />
+        <div class="clearfix"></div>
+      </form>
+    </div>
+  </div>
+</div>

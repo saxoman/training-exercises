@@ -6,6 +6,7 @@ import { ProductModalComponent } from '@app/products/product-modal/product-modal
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeleteConfirmationModalComponent } from '@app/administration/delete-confirmation-modal/delete-confirmation-modal.component';
 import { NotifierService } from 'angular-notifier';
+import { Product } from '@app/models/product.model';
 
 @Component({
   selector: 'app-all-products',
@@ -16,6 +17,7 @@ export class AllProductsComponent implements OnInit {
   products: any;
   displayedColumns: string[] = ['id', 'title', 'description', 'price', 'image', 'quantity', 'action'];
   searchText: string = '';
+  error = null;
 
   constructor(
     private productsService: ProductsService,
@@ -26,15 +28,22 @@ export class AllProductsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productsService.getProducts().subscribe((products) => {
-      this.products = products;
+    this.productsService.getProducts().subscribe({
+      next: (value) => {
+        this.products = value;
+      },
+      error: (err) => {
+        this.error = err;
+        this.notifierService.notify('error', `'An error ocured ${err.message}'`);
+      },
     });
   }
 
-  onEditProduct(event: Event) {
+  onEditProduct(event: Event, id: String) {
     this.preventDefaultProp(event);
-    console.log('edit');
+    this.router.navigate(['administration/new-product', id]);
   }
+
   preventDefaultProp(event: Event) {
     event.stopPropagation();
     event.preventDefault();
@@ -51,14 +60,28 @@ export class AllProductsComponent implements OnInit {
   }
 
   onAddNewProduct() {
-    this.router.navigate(['new-product'], { relativeTo: this.route });
+    this.router.navigate(['/new-product']);
   }
+
   onDeleteProduct(id: number, event: Event) {
     this.preventDefaultProp(event);
     let dialogConfirmation = this.dialog.open(DeleteConfirmationModalComponent);
-    dialogConfirmation.beforeClosed;
-    dialogConfirmation.afterClosed().subscribe(() => {
-      this.notifierService.notify('success', 'You are awesome! I mean it!');
+    //dialogConfirmation.beforeClosed;
+    dialogConfirmation.afterClosed().subscribe((result) => {
+      if (result) {
+        this.productsService.deleteProduct(id).subscribe(
+          (res) => {
+            this.ngOnInit();
+            this.notifierService.notify('success', 'You have successfully deleted the product !');
+          },
+          (error) => {
+            this.error = error;
+            this.notifierService.notify('error', `'An error occurred while deleting the product ! ${error.message}'`);
+          }
+        );
+      } else {
+        this.notifierService.notify('info', 'You have canceled the deletion of the product !', '');
+      }
     });
   }
 }
