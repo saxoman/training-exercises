@@ -51,12 +51,10 @@ export class AllProductsComponent implements OnInit {
 
   showProduct(row: RowContext<any>) {
     let dialogRef = this.dialog.open(ProductModalComponent, {
-      width: '60%',
+      width: '70%',
       data: row,
     });
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
   onAddNewProduct() {

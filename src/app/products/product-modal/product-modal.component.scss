@@ -5,3 +5,24 @@ h2 button {
   opacity: 0.3;
   cursor: pointer;
 }
+mat-grid-tile p {
+  text-align: left;
+}
+.text-inside-grid {
+  position: absolute;
+  left: 25px;
+  font-weight: bold;
+}
+.outer {
+  height: 60px;
+  display: block;
+}
+.mat-dialog-title {
+  margin-top: 30px;
+  margin-left: 10px;
+}
+.mat-dialog-close {
+  margin-left: 93%;
+  font-weight: bold;
+  cursor: pointer;
+}
