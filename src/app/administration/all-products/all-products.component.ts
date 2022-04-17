@@ -14,7 +14,7 @@ import { Product } from '@app/models/product.model';
   styleUrls: ['./all-products.component.scss'],
 })
 export class AllProductsComponent implements OnInit {
-  products: any;
+  products: Product[];
   displayedColumns: string[] = ['id', 'title', 'description', 'price', 'image', 'quantity', 'action'];
   searchText: string = '';
   error = null;
@@ -41,7 +41,7 @@ export class AllProductsComponent implements OnInit {
 
   onEditProduct(event: Event, id: String) {
     this.preventDefaultProp(event);
-    this.router.navigate(['administration/new-product', id]);
+    this.router.navigate(['administration/product', id]);
   }
 
   preventDefaultProp(event: Event) {
@@ -57,14 +57,9 @@ export class AllProductsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {});
   }
 
-  onAddNewProduct() {
-    this.router.navigate(['/new-product']);
-  }
-
   onDeleteProduct(id: number, event: Event) {
     this.preventDefaultProp(event);
     let dialogConfirmation = this.dialog.open(DeleteConfirmationModalComponent);
-    //dialogConfirmation.beforeClosed;
     dialogConfirmation.afterClosed().subscribe((result) => {
       if (result) {
         this.productsService.deleteProduct(id).subscribe(

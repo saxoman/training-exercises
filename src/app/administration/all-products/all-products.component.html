@@ -3,7 +3,9 @@
   <mat-form-field>
     <input matInput [(ngModel)]="searchText" placeholder="Filter by Title" />
   </mat-form-field>
-  <a mat-raised-button color="primary" routerLink="new-product">Add new product</a>
+  <a mat-raised-button color="primary" routerLink="/administration/new-product"
+    ><span translate>Add new product</span></a
+  >
   <div class="table-container mat-elevation-z8">
     <table mat-table [dataSource]="products | filterByName: searchText" class="mat-elevation-z8">
       <!-- ID Column -->

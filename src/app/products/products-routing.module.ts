@@ -9,8 +9,8 @@ import { FilterByNamePipe } from '@shared/filter-by-name.pipe';
 
 const routes: Routes = [
   Shell.childRoutes([
-    { path: 'products', component: ProductsComponent, data: { title: marker('Products') } },
-    { path: 'products-list', component: ProductsListComponent, data: { title: marker('Products list') } },
+    //{ path: 'products', component: ProductsComponent, data: { title: marker('Products') } },
+    { path: 'products/products-list', component: ProductsListComponent, data: { title: marker('Products list') } },
   ]),
 ];
 @NgModule({

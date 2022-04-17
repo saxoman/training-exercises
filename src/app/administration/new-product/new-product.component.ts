@@ -70,7 +70,7 @@ export class NewProductComponent implements OnInit {
         },
       });
       setTimeout(() => {
-        this.router.navigate(['/administration'], { relativeTo: this.route });
+        this.router.navigate(['/administration/all-products'], { relativeTo: this.route });
       }, 5000);
     } else {
       this.productsService.editProduct(formData, this.id).subscribe({
@@ -82,7 +82,7 @@ export class NewProductComponent implements OnInit {
         },
       });
       setTimeout(() => {
-        this.router.navigate(['/administration'], { relativeTo: this.route });
+        this.router.navigate(['/administration/all-products'], { relativeTo: this.route });
       }, 5000);
     }
   }

@@ -2,7 +2,9 @@
   <notifier-container></notifier-container>
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <h3>{{ buttonPageTitle }}</h3>
+      <h3>
+        <span translate> {{ buttonPageTitle }} </span>
+      </h3>
       <form #postForm="ngForm" (ngSubmit)="onSubmit(postForm.value)">
         <mat-form-field>
           <input
@@ -92,7 +94,7 @@
           </ng-template>
         </div>
         <button [disabled]="postForm.invalid || !postForm.dirty" mat-raised-button color="primary" type="submit">
-          <mat-icon>done</mat-icon>{{ buttonPageTitle }}</button
+          <mat-icon>done</mat-icon><span translate>{{ buttonPageTitle }}</span></button
         ><br /><br />
         <div class="clearfix"></div>
       </form>
