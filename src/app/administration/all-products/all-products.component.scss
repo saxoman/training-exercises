@@ -4,3 +4,11 @@
 .mat-mini-fab {
   margin-right: 10px;
 }
+table {
+  width: 100%;
+}
+.table-container {
+  min-width: 1024px;
+  max-width: 100%;
+  overflow-x: scroll;
+}
